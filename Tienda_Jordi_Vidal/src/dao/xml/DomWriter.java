@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -76,7 +78,11 @@ private Document document;
 			Transformer transformer = factory.newTransformer();
 			
 			Source source = new DOMSource(document);
-			File file = new File("src/Files/productsOutput.xml");
+			long currentTime = System.currentTimeMillis();
+			Date fechaActual = new Date(currentTime);
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+	        String fechaFormateada = formato.format(fechaActual);
+			File file = new File("src/Files/inventory_" + fechaFormateada + ".xml");
 			FileWriter fw = new FileWriter(file);
 			PrintWriter pw = new PrintWriter(fw);
 			Result result = new StreamResult(pw);
