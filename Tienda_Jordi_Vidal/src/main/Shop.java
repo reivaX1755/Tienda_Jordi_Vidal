@@ -20,6 +20,7 @@ import java.util.Scanner;
 
 import dao.Dao;
 import dao.DaoImplFile;
+import dao.DaoImplJaxb;
 import dao.DaoImplXml;
 
 public class Shop {
@@ -34,7 +35,7 @@ public class Shop {
         cash = new Amount(0.0);
         inventory = new ArrayList<>();
         sales = new ArrayList<>();
-        dao = new DaoImplXml();
+        dao = new DaoImplJaxb();
     }
 	public static void main(String[] args){
 		Shop shop = new Shop();
@@ -149,11 +150,11 @@ public class Shop {
 		System.out.print("Añada el nombre del producto a añadir: ");
 		String name = scanner.nextLine();
 		System.out.print("Precio producto mayorista: ");
-		double wholesalerPrice = scanner.nextDouble();
+		Double wholesalerPrice = scanner.nextDouble();
 		System.out.print("Stock: ");
 		int stock = scanner.nextInt();
 
-		inventory.add(new Product(name, wholesalerPrice, true, stock));
+		inventory.add(new Product(name, new Amount(wholesalerPrice), true, stock));
 		Product product = findProduct(name);
 		product.setPublicPrice(product.getWholesalerPrice());
 		System.out.print("\n"+stock+" unidades de "+name+" han sido añadidos");
@@ -183,17 +184,25 @@ public class Shop {
 		Product product = findProduct(name);
 		product.expire();
 		if (product != null) {
-			System.out.println("\nEl precio del producto " + name + " ha sido actualizado a " + Math.round(product.getPublicPrice() * 100.0) / 100.0+"€");
+			System.out.println("\nEl precio del producto " + name + " ha sido actualizado a " + Math.round(product.getPublicPrice().getValue() * 100.0) / 100.0 + "€");
 		}
 	}
 	public void showInventory() {
-		System.out.println("Contenido actual de la tienda:");
-		for (Product product : inventory) {
-			if (product != null) {
-				System.out.println("Nombre: "+product.getName()+" // Id: "+product.getId()+" // Precio Proveedor Unidad: "+product.getWholesalerPrice()
-				+" // Precio Venta Cliente Unidad: "+product.getPublicPrice()+" // Stock: "+product.getStock()+" // isAvailable: "+product.isAvailable());
-			}
-		}
+	    System.out.println("Contenido actual de la tienda:");
+	    for (Product product : inventory) {
+	        if (product != null) {
+	            double wholesalerPriceValue = product.getWholesalerPrice() != null ? product.getWholesalerPrice().getValue() : 0.0;
+	            double publicPriceValue = product.getPublicPrice() != null ? product.getPublicPrice().getValue() : 0.0;
+	            
+
+	            System.out.println("Nombre: " + product.getName() +
+	                               " // Id: " + product.getId() +
+	                               " // Precio Proveedor Unidad: " + String.format("%.2f", wholesalerPriceValue) +" " +(product.getWholesalerPrice().getCurrency()) +
+	                               " // Precio Venta Cliente Unidad: " + String.format("%.2f", publicPriceValue) +" " +(product.getWholesalerPrice().getCurrency()) +
+	                               " // Stock: " + product.getStock() +
+	                               " // isAvailable: " + product.isAvailable());
+	        }
+	    }
 	}
 	public void deleteProduct() {
 		Scanner scanner = new Scanner(System.in);
@@ -238,7 +247,7 @@ public class Shop {
 		        boolean productAvailable = false;
 		        if (product != null && product.isAvailable()) {
 		            productAvailable = true;
-		            totalAmount.setValue(totalAmount.getValue() + product.getPublicPrice());  
+		            totalAmount.setValue(totalAmount.getValue() + product.getPublicPrice().getValue()); 
 		            product.setStock(product.getStock() - 1);
 		            if (product.getStock() == 0) {
 		                product.setAvailable(false);
@@ -295,7 +304,7 @@ public class Shop {
 		        boolean productAvailable = false;
 		        if (product != null && product.isAvailable()) {
 		            productAvailable = true;
-		            totalAmount.setValue(totalAmount.getValue() + product.getPublicPrice());  
+		            totalAmount.setValue(totalAmount.getValue() + product.getPublicPrice().getValue());  
 		            product.setStock(product.getStock() - 1);
 		            if (product.getStock() == 0) {
 		                product.setAvailable(false);

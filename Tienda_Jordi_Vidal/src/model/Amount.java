@@ -1,29 +1,56 @@
 package model;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlValue;
+
 public class Amount {
-	double value;
-	final String currency = "€";
-	
-	public Amount(double value) {
-		super();
-		this.value = value;
-	}
+    private double value;
+    private String currency;
 
-	public double getValue() {
-		return value;
-	}
+    private final String defaultCurrency = "€";
 
-	public void setValue(double value) {
-		this.value = value;
-	}
+    // Constructor
+    public Amount() {
+    	this.currency = defaultCurrency;
+    }
 
-	public String getCurrency() {
-		return currency;
-	}
+    public Amount(double value) {
+        this.value = value;
+        this.currency = defaultCurrency; 
+    }
 
-	@Override
-	public String toString() {
-		return  value + currency;
-	}
-	
+    @XmlValue
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    @XmlAttribute(name = "currency")
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+    	if ("Euro".equals(currency)) {
+            currency =  "€";
+        }
+        this.currency = currency;
+    }
+
+    @XmlTransient  
+    public String getFormattedCurrency() {
+        if ("Euro".equals(this.currency)) {
+            return "€";
+        }
+        return this.currency;  
+    }
+
+    @Override
+    public String toString() {
+        return value + " " + getFormattedCurrency();
+    }
 }

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import main.Shop;
+import model.Amount;
 import model.Product;
 
 import javax.swing.JLabel;
@@ -116,7 +117,7 @@ public class ProductView extends JDialog implements ActionListener{
 							    }
 							}
 							if (!productoExistente) {
-								shop.inventory.add(new Product(name, wholesalerPrice, true, stock));
+								shop.inventory.add(new Product(name, new Amount(wholesalerPrice), true, stock));
 							    JOptionPane.showMessageDialog(null, "Producto añadido con éxito!", "Añadir Producto", JOptionPane.INFORMATION_MESSAGE);
 							    for (Product product : shop.inventory) {
 									if (product != null) {
