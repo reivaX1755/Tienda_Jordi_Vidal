@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<products total="24">
+    <product id="1" name="Manzana">
+        <available>true</available>
+        <wholesalerPrice currency="€">10.0</wholesalerPrice>
+        <publicPrice currency="€">20.0</publicPrice>
+        <stock>10</stock>
+    </product>
+    <product id="2" name="Fresa">
+        <available>true</available>
+        <wholesalerPrice currency="€">5.0</wholesalerPrice>
+        <publicPrice currency="€">10.0</publicPrice>
+        <stock>20</stock>
+    </product>
+    <product id="3" name="Naranja">
+        <available>true</available>
+        <wholesalerPrice currency="€">7.5</wholesalerPrice>
+        <publicPrice currency="€">15.0</publicPrice>
+        <stock>15</stock>
+    </product>
+    <product id="4" name="Platano">
+        <available>true</available>
+        <wholesalerPrice currency="€">8.0</wholesalerPrice>
+        <publicPrice currency="€">16.0</publicPrice>
+        <stock>12</stock>
+    </product>
+    <product id="5" name="Uva">
+        <available>true</available>
+        <wholesalerPrice currency="€">12.0</wholesalerPrice>
+        <publicPrice currency="€">24.0</publicPrice>
+        <stock>8</stock>
+    </product>
+    <product id="6" name="Pina">
+        <available>true</available>
+        <wholesalerPrice currency="€">15.0</wholesalerPrice>
+        <publicPrice currency="€">30.0</publicPrice>
+        <stock>5</stock>
+    </product>
+    <product id="7" name="Sandia">
+        <available>true</available>
+        <wholesalerPrice currency="€">20.0</wholesalerPrice>
+        <publicPrice currency="€">40.0</publicPrice>
+        <stock>6</stock>
+    </product>
+    <product id="8" name="Melon">
+        <available>true</available>
+        <wholesalerPrice currency="€">18.0</wholesalerPrice>
+        <publicPrice currency="€">36.0</publicPrice>
+        <stock>7</stock>
+    </product>
+    <product id="9" name="Kiwi">
+        <available>true</available>
+        <wholesalerPrice currency="€">9.0</wholesalerPrice>
+        <publicPrice currency="€">18.0</publicPrice>
+        <stock>11</stock>
+    </product>
+    <product id="10" name="Mango">
+        <available>true</available>
+        <wholesalerPrice currency="€">13.0</wholesalerPrice>
+        <publicPrice currency="€">26.0</publicPrice>
+        <stock>9</stock>
+    </product>
+    <product id="11" name="Cereza">
+        <available>true</available>
+        <wholesalerPrice currency="€">11.0</wholesalerPrice>
+        <publicPrice currency="€">22.0</publicPrice>
+        <stock>10</stock>
+    </product>
+    <product id="12" name="Uchuva">
+        <available>true</available>
+        <wholesalerPrice currency="€">17.0</wholesalerPrice>
+        <publicPrice currency="€">34.0</publicPrice>
+        <stock>6</stock>
+    </product>
+    <product id="13" name="Durazno">
+        <available>true</available>
+        <wholesalerPrice currency="€">8.5</wholesalerPrice>
+        <publicPrice currency="€">17.0</publicPrice>
+        <stock>14</stock>
+    </product>
+    <product id="14" name="Limon">
+        <available>true</available>
+        <wholesalerPrice currency="€">6.0</wholesalerPrice>
+        <publicPrice currency="€">12.0</publicPrice>
+        <stock>18</stock>
+    </product>
+    <product id="15" name="Ciruela">
+        <available>true</available>
+        <wholesalerPrice currency="€">10.5</wholesalerPrice>
+        <publicPrice currency="€">21.0</publicPrice>
+        <stock>13</stock>
+    </product>
+    <product id="16" name="Papaya">
+        <available>true</available>
+        <wholesalerPrice currency="€">16.0</wholesalerPrice>
+        <publicPrice currency="€">32.0</publicPrice>
+        <stock>7</stock>
+    </product>
+    <product id="17" name="Granada">
+        <available>true</available>
+        <wholesalerPrice currency="€">14.0</wholesalerPrice>
+        <publicPrice currency="€">28.0</publicPrice>
+        <stock>8</stock>
+    </product>
+    <product id="18" name="Tamarindo">
+        <available>true</available>
+        <wholesalerPrice currency="€">11.5</wholesalerPrice>
+        <publicPrice currency="€">23.0</publicPrice>
+        <stock>10</stock>
+    </product>
+    <product id="19" name="Pera">
+        <available>true</available>
+        <wholesalerPrice currency="€">9.5</wholesalerPrice>
+        <publicPrice currency="€">19.0</publicPrice>
+        <stock>11</stock>
+    </product>
+    <product id="20" name="Coco">
+        <available>true</available>
+        <wholesalerPrice currency="€">12.0</wholesalerPrice>
+        <publicPrice currency="€">24.0</publicPrice>
+        <stock>8</stock>
+    </product>
+    <product id="21" name="Guayaba">
+        <available>true</available>
+        <wholesalerPrice currency="€">7.0</wholesalerPrice>
+        <publicPrice currency="€">14.0</publicPrice>
+        <stock>15</stock>
+    </product>
+    <product id="22" name="Mandarina">
+        <available>true</available>
+        <wholesalerPrice currency="€">6.5</wholesalerPrice>
+        <publicPrice currency="€">13.0</publicPrice>
+        <stock>16</stock>
+    </product>
+    <product id="23" name="Ciruela">
+        <available>true</available>
+        <wholesalerPrice currency="€">11.0</wholesalerPrice>
+        <publicPrice currency="€">22.0</publicPrice>
+        <stock>12</stock>
+    </product>
+    <product id="24" name="Higo">
+        <available>true</available>
+        <wholesalerPrice currency="€">10.5</wholesalerPrice>
+        <publicPrice currency="€">21.0</publicPrice>
+        <stock>10</stock>
+    </product>
+</products>

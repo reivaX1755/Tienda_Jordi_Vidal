@@ -82,7 +82,7 @@ private Document document;
 			Date fechaActual = new Date(currentTime);
 			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 	        String fechaFormateada = formato.format(fechaActual);
-			File file = new File("src/Files/inventory_" + fechaFormateada + ".xml");
+			File file = new File("xml/inventory_" + fechaFormateada + ".xml");
 			FileWriter fw = new FileWriter(file);
 			PrintWriter pw = new PrintWriter(fw);
 			Result result = new StreamResult(pw);
