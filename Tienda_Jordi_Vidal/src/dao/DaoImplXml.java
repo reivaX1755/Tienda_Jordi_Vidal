@@ -51,11 +51,7 @@ public class DaoImplXml implements Dao {
 	public boolean writeInventory(ArrayList<Product> inventory) {
 		DomWriter domWriter = new DomWriter();
 		boolean created = domWriter.generateDocument(inventory);
-		if (created) {
-			return true;
-		} else {
-			return false;
-		}
+		return created;
 
 	}
 
