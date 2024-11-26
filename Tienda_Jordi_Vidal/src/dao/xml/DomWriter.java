@@ -40,7 +40,7 @@ private Document document;
 	}
 	public boolean generateDocument(ArrayList<Product> inventory) {
 	    Element products = document.createElement("products");
-	    products.setAttribute("total", String.valueOf(inventory.size())); 
+	    products.setAttribute("total", String.valueOf(Product.getTotalProducts())); 
 	    document.appendChild(products);
 	    int i = 1;
 	    for (Product producto : inventory) {
