@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "product")
 @XmlType(propOrder = {"id", "name", "available", "wholesalerPrice", "publicPrice", "stock"})
 public class Product {
-	private static int id;
+	private int id;
 	private String name;
     private Amount publicPrice;
     private Amount wholesalerPrice;
@@ -34,7 +34,7 @@ public class Product {
         totalProducts++;
     }
     @XmlAttribute(name = "id")
-    public static int getId() {
+    public int getId() {
 		return id;
 	}
 
