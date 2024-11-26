@@ -47,7 +47,7 @@ private Document document;
 	    	
 	        // Crear el nodo "product" con el atributo del contador
 	        Element product = document.createElement("product");
-	        product.setAttribute("id", String.valueOf(i));
+	        product.setAttribute("id", String.valueOf(Product.getId()));
 	        products.appendChild(product);
 
 	        // Nodo "name" para el nombre del producto
