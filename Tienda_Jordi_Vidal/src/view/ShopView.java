@@ -191,9 +191,9 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 	public void writeInventory(Shop shop) {
 		boolean created = shop.dao.writeInventory(shop.inventory);
 		if(created == true) {
-			JOptionPane.showMessageDialog(null, "Archivo Creado con exito", "Info", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Inventario exportado con exito", "Info", JOptionPane.INFORMATION_MESSAGE);
 		}else {
-			JOptionPane.showMessageDialog(null, "ERROR al crear el archivo", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERROR al exportar el inventario", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

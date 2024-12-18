@@ -20,6 +20,7 @@ import java.util.Scanner;
 
 import dao.Dao;
 import dao.DaoImplFile;
+import dao.DaoImplJDBC;
 import dao.DaoImplJaxb;
 import dao.DaoImplXml;
 
@@ -35,7 +36,7 @@ public class Shop {
         cash = new Amount(0.0);
         inventory = new ArrayList<>();
         sales = new ArrayList<>();
-        dao = new DaoImplJaxb();
+        dao = new DaoImplJDBC();
     }
 	public static void main(String[] args){
 		Shop shop = new Shop();

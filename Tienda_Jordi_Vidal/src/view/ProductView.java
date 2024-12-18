@@ -117,7 +117,9 @@ public class ProductView extends JDialog implements ActionListener{
 							    }
 							}
 							if (!productoExistente) {
-								shop.inventory.add(new Product(name, new Amount(wholesalerPrice), true, stock));
+								Product newProduct = new Product(name, new Amount(wholesalerPrice), true, stock);
+							    shop.inventory.add(newProduct);
+								shop.dao.addProduct(newProduct);
 							    JOptionPane.showMessageDialog(null, "Producto añadido con éxito!", "Añadir Producto", JOptionPane.INFORMATION_MESSAGE);
 							    for (Product product : shop.inventory) {
 									if (product != null) {
@@ -136,6 +138,7 @@ public class ProductView extends JDialog implements ActionListener{
 
 							if (product != null) {
 								product.setStock((product.getStock() + stock));
+								shop.dao.addStock(product);
 								if (product.getStock() > 0) {
 					                product.setAvailable(true);
 					            }
@@ -153,6 +156,7 @@ public class ProductView extends JDialog implements ActionListener{
 								if (product2 != null) {
 									if (product2.getName().equalsIgnoreCase(name)) {
 										shop.inventory.remove(i);
+										shop.dao.deleteProduct(name);
 										existe = true;
 										JOptionPane.showMessageDialog(null, "El producto llamado: " + name + " ha sido eliminado con exito! ", "Eliminar producto", JOptionPane.INFORMATION_MESSAGE);
 										for (Product product3 : shop.inventory) {

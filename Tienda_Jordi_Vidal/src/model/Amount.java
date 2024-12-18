@@ -10,7 +10,6 @@ public class Amount {
 
     private final String defaultCurrency = "€";
 
-    // Constructor
     public Amount() {
     	this.currency = defaultCurrency;
     }
