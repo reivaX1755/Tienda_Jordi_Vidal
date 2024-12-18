@@ -96,7 +96,7 @@ public class DaoImplJDBC implements Dao{
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String fechaFormateada = formato.format(fechaActual);
 	    connect();
-	    String insertQuery = "INSERT INTO historical_inventory (id, name, wholesalerPrice, available, stock, created_at) "
+	    String insertQuery = "INSERT INTO historical_inventory (id_product, name, wholesalerPrice, available, stock, created_at) "
 	                        + "VALUES (?, ?, ?, ?, ?, ?)";
 
 	    try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
