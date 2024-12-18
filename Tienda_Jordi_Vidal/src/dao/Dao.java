@@ -20,5 +20,5 @@ public interface Dao {
 
 	public void deleteProduct(String productName);
 	
-	public void addStock(Product product);
+	public void updateProduct(Product product);
 }

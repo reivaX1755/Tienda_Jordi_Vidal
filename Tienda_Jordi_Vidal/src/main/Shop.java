@@ -147,6 +147,7 @@ public class Shop {
 		}
 	}
 	public void addProduct() {
+		boolean isAvailable = false;
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Añada el nombre del producto a añadir: ");
 		String name = scanner.nextLine();
@@ -154,8 +155,10 @@ public class Shop {
 		Double wholesalerPrice = scanner.nextDouble();
 		System.out.print("Stock: ");
 		int stock = scanner.nextInt();
-
-		inventory.add(new Product(name, new Amount(wholesalerPrice), true, stock));
+		if(stock > 0) {
+			isAvailable = true;
+		}
+		inventory.add(new Product(name, new Amount(wholesalerPrice), isAvailable, stock));
 		Product product = findProduct(name);
 		product.setPublicPrice(product.getWholesalerPrice());
 		System.out.print("\n"+stock+" unidades de "+name+" han sido añadidos");

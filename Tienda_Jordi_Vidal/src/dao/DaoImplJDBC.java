@@ -167,16 +167,21 @@ public class DaoImplJDBC implements Dao{
 	}
 
 	@Override
-	public void addStock(Product product) {
-	    connect();
+	public void updateProduct(Product product) {   
+		connect();
 
-	    String query = "UPDATE inventory SET stock = ? WHERE name = ?";
+	    boolean isAvailable = false;
+	    if(product.getStock() > 0) {
+	    	isAvailable = true;
+	    }
+	    String query = "UPDATE inventory SET stock = ?, available = ? WHERE name = ?";
 
 	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 	        preparedStatement.setInt(1, product.getStock());
-	        preparedStatement.setString(2, product.getName());
+	        preparedStatement.setBoolean(2, isAvailable);
+	        preparedStatement.setString(3, product.getName());
 
-	        preparedStatement.executeUpdate();
+	        preparedStatement.executeUpdate(); 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    } finally {

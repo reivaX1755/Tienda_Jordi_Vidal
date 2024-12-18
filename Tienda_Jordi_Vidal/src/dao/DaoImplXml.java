@@ -66,7 +66,7 @@ public class DaoImplXml implements Dao {
 	}
 
 	@Override
-	public void addStock(Product product) {
+	public void updateProduct(Product product) {
 		// TODO Auto-generated method stub
 		
 	}

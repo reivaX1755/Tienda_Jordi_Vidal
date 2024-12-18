@@ -21,7 +21,6 @@ public class Product {
     public Product() {
         this.id = totalProducts + 1;
         totalProducts++;
-        available = true;
     }
 
     public Product(String name, Amount wholesalerPrice, boolean available, int stock) {
@@ -96,6 +95,9 @@ public class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+        if(this.stock > 0) {
+        	this.available = true;
+        }
     }
 
     public static int getTotalProducts() {
