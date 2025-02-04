@@ -106,8 +106,8 @@ public class ProductView extends JDialog implements ActionListener{
 							boolean isAvailable = false;
 							String name = nombreproducto.getText();
 							String stocktext = stockproducto.getText();
-							String wholesalerPricetext = precioproducto.getText();
-							double wholesalerPrice = Double.parseDouble(wholesalerPricetext);
+							String pricetext = precioproducto.getText();
+							double price = Double.parseDouble(pricetext);
 							int stock = Integer.parseInt(stocktext);
 							boolean productoExistente = false;
 							for (Product product : shop.inventory) {
@@ -121,7 +121,7 @@ public class ProductView extends JDialog implements ActionListener{
 								if(stock > 0){
 									isAvailable = true;
 								}
-								Product newProduct = new Product(name, new Amount(wholesalerPrice), isAvailable, stock);
+								Product newProduct = new Product(isAvailable, name, price, stock);
 							    shop.inventory.add(newProduct);
 								shop.dao.addProduct(newProduct);
 							    JOptionPane.showMessageDialog(null, "Producto añadido con éxito!", "Añadir Producto", JOptionPane.INFORMATION_MESSAGE);

@@ -1,0 +1,23 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuración de conexión -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Shop</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Configuración para la actualización de la base de datos -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Mostrar las consultas SQL en consola -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Formatear las consultas SQL -->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Mapeo de clases -->
+        <mapping class="model.Product" />
+        <mapping class="model.ProductHistory" />
+    </session-factory>
+</hibernate-configuration>

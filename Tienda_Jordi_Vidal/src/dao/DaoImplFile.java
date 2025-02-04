@@ -50,7 +50,7 @@ public class DaoImplFile implements Dao{
 		            double precio = Double.parseDouble(partes[1].replace("Wholesaler Price:", ""));
 		            boolean disponible = true;
 		            int cantidad = Integer.parseInt(partes[2].replace("Stock:", ""));
-		            inventory.add(new Product(nombre, new Amount(precio), disponible, cantidad));
+		            inventory.add(new Product(cantidad, nombre, new Amount(precio), disponible, cantidad));
 		            linea = newFichero2.readLine();
 		        }
 		        newFichero2.close();    

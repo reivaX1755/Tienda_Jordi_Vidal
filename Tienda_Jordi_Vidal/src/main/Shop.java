@@ -20,6 +20,7 @@ import java.util.Scanner;
 
 import dao.Dao;
 import dao.DaoImplFile;
+import dao.DaoImplHibernate;
 import dao.DaoImplJDBC;
 import dao.DaoImplJaxb;
 import dao.DaoImplXml;
@@ -36,7 +37,7 @@ public class Shop {
         cash = new Amount(0.0);
         inventory = new ArrayList<>();
         sales = new ArrayList<>();
-        dao = new DaoImplJDBC();
+        dao = new DaoImplHibernate();
     }
 	public static void main(String[] args){
 		Shop shop = new Shop();
@@ -158,7 +159,7 @@ public class Shop {
 		if(stock > 0) {
 			isAvailable = true;
 		}
-		inventory.add(new Product(name, new Amount(wholesalerPrice), isAvailable, stock));
+		inventory.add(new Product(stock, name, new Amount(wholesalerPrice), isAvailable, stock));
 		Product product = findProduct(name);
 		product.setPublicPrice(product.getWholesalerPrice());
 		System.out.print("\n"+stock+" unidades de "+name+" han sido añadidos");
@@ -197,6 +198,25 @@ public class Shop {
 	        if (product != null) {
 	            double wholesalerPriceValue = product.getWholesalerPrice() != null ? product.getWholesalerPrice().getValue() : 0.0;
 	            double publicPriceValue = product.getPublicPrice() != null ? product.getPublicPrice().getValue() : 0.0;
+	            String wholesalerCurrency = (product.getWholesalerPrice() != null && product.getWholesalerPrice().getCurrency() != null)
+	                                        ? product.getWholesalerPrice().getCurrency() 
+	                                        : "N/A"; // o un valor por defecto
+
+	            System.out.println("Nombre: " + product.getName() +
+	                               " // Id: " + product.getId() +
+	                               " // Precio Proveedor Unidad: " + String.format("%.2f", wholesalerPriceValue) + " " + wholesalerCurrency +
+	                               " // Precio Venta Cliente Unidad: " + String.format("%.2f", publicPriceValue) + " " + wholesalerCurrency +
+	                               " // Stock: " + product.getStock() +
+	                               " // isAvailable: " + product.isAvailable());
+	        }
+	    }
+	}
+	/*public void showInventory() {
+	    System.out.println("Contenido actual de la tienda:");
+	    for (Product product : inventory) {
+	        if (product != null) {
+	            double wholesalerPriceValue = product.getWholesalerPrice() != null ? product.getWholesalerPrice().getValue() : 0.0;
+	            double publicPriceValue = product.getPublicPrice() != null ? product.getPublicPrice().getValue() : 0.0;
 	            
 
 	            System.out.println("Nombre: " + product.getName() +
@@ -207,7 +227,7 @@ public class Shop {
 	                               " // isAvailable: " + product.isAvailable());
 	        }
 	    }
-	}
+	}*/
 	public void deleteProduct() {
 		Scanner scanner = new Scanner(System.in);
 	    System.out.print("Introduce el nombre del producto que quieres eliminar del inventario: ");

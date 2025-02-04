@@ -78,7 +78,7 @@ public class DaoImplJDBC implements Dao{
 	            boolean available = resultSet.getBoolean("available");
 	            int stock = resultSet.getInt("stock");
 	            
-	            Product product = new Product(name, wholesalerPrice, available, stock);
+	            Product product = new Product(stock, name, wholesalerPrice, available, stock);
 	            products.add(product);
 	        }
 	    } catch (SQLException e) {
@@ -128,26 +128,26 @@ public class DaoImplJDBC implements Dao{
 	    }
 	}
 
-	@Override
-	public void addProduct(Product product) {
-		connect();
-
-	    String query = "INSERT INTO inventory (id, name, wholesalerPrice, available, stock) VALUES (?, ?, ?, ?, ?)";
-
-	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-	    	preparedStatement.setInt(1, product.getId());
-	    	preparedStatement.setString(2, product.getName());
-	        preparedStatement.setDouble(3, product.getWholesalerPrice().getValue());
-	        preparedStatement.setBoolean(4, product.isAvailable());
-	        preparedStatement.setInt(5, product.getStock());
-	        
-	        preparedStatement.executeUpdate();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        disconnect();
-	    }
-	}
+		@Override
+		public void addProduct(Product product) {
+			connect();
+	
+		    String query = "INSERT INTO inventory (id, name, wholesalerPrice, available, stock) VALUES (?, ?, ?, ?, ?)";
+	
+		    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+		    	preparedStatement.setInt(1, product.getId());
+		    	preparedStatement.setString(2, product.getName());
+		        preparedStatement.setDouble(3, product.getWholesalerPrice().getValue());
+		        preparedStatement.setBoolean(4, product.isAvailable());
+		        preparedStatement.setInt(5, product.getStock());
+		        
+		        preparedStatement.executeUpdate();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        disconnect();
+		    }
+		}
 
 	@Override
 	public void deleteProduct(String productName) {
