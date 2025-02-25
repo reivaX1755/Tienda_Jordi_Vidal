@@ -46,7 +46,7 @@
         <version>2.2</version>
     </dependency>
 
-    <!-- JAXB API (ya la tienes configurada) -->
+    <!-- JAXB API -->
     <dependency>
         <groupId>javax.xml.bind</groupId>
         <artifactId>jaxb-api</artifactId>
@@ -62,6 +62,14 @@
         <artifactId>jaxb-runtime</artifactId>
         <version>2.3.3</version>
     </dependency>
+
+	<!-- MondoDB -->
+	<dependency>
+		<groupId>org.mongodb</groupId>
+		<artifactId>mongo-java-driver</artifactId>
+		<version>3.10.2</version>
+	</dependency>
+    
 </dependencies>
 
 </project>

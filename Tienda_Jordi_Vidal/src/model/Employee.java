@@ -2,6 +2,7 @@ package model;
 
 import dao.Dao;
 import dao.DaoImplJDBC;
+import dao.DaoImplMongoDB;
 import main.Logable;
 
 public class Employee extends Person implements Logable{
@@ -14,7 +15,7 @@ public class Employee extends Person implements Logable{
 	public Employee(String name, int employeeID) {
 		super(name);
 		this.employeeID = employeeID;
-		this.dao = new DaoImplJDBC();
+		this.dao = new DaoImplMongoDB();
 	}
 	@Override
 	public boolean login(int user, String password) {

@@ -23,6 +23,7 @@ import dao.DaoImplFile;
 import dao.DaoImplHibernate;
 import dao.DaoImplJDBC;
 import dao.DaoImplJaxb;
+import dao.DaoImplMongoDB;
 import dao.DaoImplXml;
 
 public class Shop {
@@ -37,7 +38,7 @@ public class Shop {
         cash = new Amount(0.0);
         inventory = new ArrayList<>();
         sales = new ArrayList<>();
-        dao = new DaoImplHibernate();
+        dao = new DaoImplMongoDB();
     }
 	public static void main(String[] args){
 		Shop shop = new Shop();
@@ -193,6 +194,7 @@ public class Shop {
 		}
 	}
 	public void showInventory() {
+		inventory = dao.getInventory();
 	    System.out.println("Contenido actual de la tienda:");
 	    for (Product product : inventory) {
 	        if (product != null) {
@@ -211,23 +213,7 @@ public class Shop {
 	        }
 	    }
 	}
-	/*public void showInventory() {
-	    System.out.println("Contenido actual de la tienda:");
-	    for (Product product : inventory) {
-	        if (product != null) {
-	            double wholesalerPriceValue = product.getWholesalerPrice() != null ? product.getWholesalerPrice().getValue() : 0.0;
-	            double publicPriceValue = product.getPublicPrice() != null ? product.getPublicPrice().getValue() : 0.0;
-	            
-
-	            System.out.println("Nombre: " + product.getName() +
-	                               " // Id: " + product.getId() +
-	                               " // Precio Proveedor Unidad: " + String.format("%.2f", wholesalerPriceValue) +" " +(product.getWholesalerPrice().getCurrency()) +
-	                               " // Precio Venta Cliente Unidad: " + String.format("%.2f", publicPriceValue) +" " +(product.getWholesalerPrice().getCurrency()) +
-	                               " // Stock: " + product.getStock() +
-	                               " // isAvailable: " + product.isAvailable());
-	        }
-	    }
-	}*/
+	
 	public void deleteProduct() {
 		Scanner scanner = new Scanner(System.in);
 	    System.out.print("Introduce el nombre del producto que quieres eliminar del inventario: ");
